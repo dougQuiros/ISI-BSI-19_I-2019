@@ -1,0 +1,30 @@
+<!-- 
+/**
+Ejercicio 7
+Escriba una función a la que se pase como parámetro un número entero y devuelva como resultado una cadena de texto 
+indicando si el número pasado como parámetro es par o impar. Mostrar en consola el resultado de la función. 
+*/
+ -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html> 
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" >
+		<title>Ejercicio 7</title>
+	</head>
+	<body>
+		<script>
+			function analizaNum(num) {
+				if (num%2==0) {
+					document.body.innerHTML += "<p>El número "+num+" es par.</p>";
+				}else{ 
+					document.body.innerHTML += "<p>El número "+num+" es impar.</p>";
+				}
+			}
+
+			var numero = prompt("Ingrese el numero entero que desea determinar");
+			analizaNum(numero);
+		</script>
+		<br><br>
+		<img src="imagenes/flecha_atras.png" alt="Retroceder" width="20" height="20"><a href="index.html"><em><b>Regresar</b></em></a>
+	</body>
+</html>

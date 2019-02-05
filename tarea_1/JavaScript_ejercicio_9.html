@@ -1,0 +1,44 @@
+<!-- 
+/**
+Ejercicio 9
+Un palíndromo es una cadena de texto que se puede leer de la misma forma de izquierda a derecha, y viceversa. 
+Escriba una función que determine si una cadena de texto (pasada como parámetro) es un palíndromo. 
+Ejemplo de un palíndromo: "Isaac no ronca así". 
+*/
+ -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html> 
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" >
+		<title>Ejercicio 9</title>
+	</head>
+	<body>
+		<script>
+			function check_Palindromo(txt_srt) {
+				var txt_clean = txt_srt.replace(/ /g,''); //la parte "/ "significa que es una exprecion regultar que busca espacios, y la "/g" significa que es global.
+				txt_clean = txt_clean.normalize('NFD').replace(/[\u0300-\u036f]/g,""); //normaliza y luego quita todos los simbolos de las letras.
+				
+				var len = Math.floor(txt_clean.length / 2);
+				var verify = true;
+				for (var i = 0; i < len; i++){
+					if (txt_clean[i] !== txt_clean[txt_clean.length-i-1]){
+						document.body.innerHTML += "La cadena de texto &#34;"+txt_srt+"&#34;, no es un palindromo.";
+						verify = false;
+						return false;
+					}
+				}
+				if(verify){
+					document.body.innerHTML += "La cadena de texto &#34;"+txt_srt+"&#34;, si es un palindromo.";
+					return true;
+				}
+			}
+			
+			var texto = prompt("Ingrese la cadena de texto que desea verificar.");
+			texto = texto.trim();
+			texto = texto.toLowerCase();
+			check_Palindromo(texto);
+		</script>
+		<br><br>
+		<img src="imagenes/flecha_atras.png" alt="Retroceder" width="20" height="20"><a href="index.html"><em><b>Regresar</b></em></a>
+	</body>
+</html>
