@@ -1,18 +1,30 @@
-<?php 
+<?php
+if(isset($_POST['sumar'])){
+	$num1 = $_POST['numero1'];
+	$num2 = $_POST['numero2'];
 
- $num1 = $_POST["num1"];
- $num2 = $_POST["num2"];
- $oper = $_POST["oper"];
- $result=0;
- if($oper === "+"){
-	$result = $num1+$num2;
- }else if($oper === "-"){
- 	$result = $num1-$num2;
- }else if($oper === "*"){
- 	$result = $num1*$num2;
- }else  if ($oper === "/")) {
- 	$result = $num1/$num2; 
- } 
- echo $result;
- 
+	echo $num1+$num2;
+}
+
+if(isset($_POST['restar'])){
+	$num1 = $_POST['numero1'];
+	$num2 = $_POST['numero2'];
+
+	echo $num1-$num2;
+}
+
+if(isset($_POST['multiplicar'])){
+	$num1 = $_POST['numero1'];
+	$num2 = $_POST['numero2'];
+
+	echo $num1*$num2;
+}
+
+if(isset($_POST['dividir'])){
+	$num1 = $_POST['numero1'];
+	$num2 = $_POST['numero2'];
+
+	echo $num1/$num2;
+}
+
 ?>

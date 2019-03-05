@@ -1,0 +1,68 @@
+<!-- 
+/**
+Index
+*/
+ -->
+<!DOCTYPE html>
+<html> 
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" >
+		<title>Tarea #2</title>
+	</head>
+
+	
+	<body>
+		<h1 >Tarea #2</h1>
+		<br>
+		Nombre de Usuario: 
+		<input type="text" name="userName" value="" required>
+		<br>
+		Contraseña: 
+		<input type="password" name="userPass" value="" required>
+		<br>
+		Email: 
+		<input type="email" name="userEmail" value="" required>
+		<br>
+		Fecha: 
+		<input type="date" name="dateTime" value="" required>
+		<br>
+		Campo oculto: 
+		<input type="hidden" name="hide" value="Esta informacion es oculta" required>
+		<br>
+		
+		<?php
+				
+				if( isset($_POST['userName']) && isset($_POST['userPass']) && isset($_POST['userEmail']) ){
+					$userName = $_POST['userName'];
+					$userPass = $_POST['userPass'];
+					$userEmail = $_POST['userEmail'];
+					if( !preg_match(,$userName) ){
+						exit('Error: se ha recibido un Nombre inválido');
+					}else if( !preg_match(,$userPass) ){
+						exit('Error: se ha recibido una Contraseña inválida');
+					}else if( !preg_match(,$userEmail) ){
+						exit('Error: se ha recibido un Email inválido');
+					}
+					//Consultas a la base de datos
+				}else{
+					exit('Error: no se han recibido todas las variables necesarias');
+				}
+			
+		?>
+		
+		
+		
+		<br><br><br>
+		<a href="instructivo/tarea_2.pdf" target="_blank"><b><h3><img src="imagenes/pdf_icon.png" alt="PDF" width="25" height="25"> Enunciado del trabajo en casa #2.</h3></b></a>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
