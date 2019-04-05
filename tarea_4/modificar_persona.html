@@ -1,0 +1,117 @@
+<!-- 
+/**
+Index
+*/
+ -->
+<!DOCTYPE html>
+<html> 
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" >
+		<title>Modificacion de personas</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		
+		<script>
+			function search(){
+				var loc = document.location.href;
+				var getString = loc.split('?')[1];
+				var GET = getString.split('&');
+
+				var id = GET[1].split('=')[1];
+				var identificacion = GET[0].split('=')[1];
+				
+
+				$.ajax({
+					url:"php/consulta_unitaria_persona.php",
+					method: "GET",
+					data:{"id":id, "userId":identificacion}
+				}).done(function(data){
+					var userInfo = data.split('{0}');
+					
+					$("#idCode").val(id);
+					
+					$("#userName").val(userInfo[0]);
+					$("#userId").val(userInfo[1]);
+					$("#nacionalidad").val(userInfo[2]);
+					$("#provincia").val(userInfo[3]);
+					$("#canton").val(userInfo[4]);
+					$("#distrito").val(userInfo[5]);
+					$("#direccion").val(userInfo[6]);
+					$("#telefono").val(userInfo[7]);
+					$("#celular").val(userInfo[8]);
+					$("#userEmail").val(userInfo[9]);
+					$("#grade").val(userInfo[10]);
+					$("#fechaNacimiento").val(userInfo[11]);
+
+				}).fail(function(){
+					alert('Hubo un error en la ejecución.');
+				});
+			
+			}
+			search();
+		</script>
+	</head>
+
+	
+	<body>
+	<form action="php/modificar_persona.php" method="post">
+		<h1 >Modificacion de personas</h1>
+		<br>
+		Nombre completo: 
+		<input type="text" id="userName" name="userName"  maxlength="50" readonly required>
+		<br>
+		Identificación: 
+		<input type="text" id="userId" name="userId"  maxlength="25" readonly required>
+		<br>
+		<span style="color:red;">*</span>Nacionalidad: 
+		<input type="text" id="nacionalidad" name="nacionalidad" value="Costarricense" maxlength="100" required>
+		<br>
+		<span style="color:red;">*</span>Provincia: 
+		<input type="text" id="provincia" name="provincia"  maxlength="50" required>
+		<br>
+		<span style="color:red;">*</span>Cantón: 
+		<input type="text" id="canton" name="canton"  maxlength="50" required>
+		<br>
+		<span style="color:red;">*</span>Distrito: 
+		<input type="text" id="distrito" name="distrito"  maxlength="50" required>
+		<br>
+		<span style="color:red;">*</span>Dirección exacta: 
+		<textarea cols=50 id="direccion" name="direccion" maxlength="500" required></textarea>
+		<br>
+		<span style="color:red;">*</span>Télefono de domicilio: 
+		<input type="text" id="telefono" name="telefono" maxlength="8" required>
+		<br>
+		<span style="color:red;">*</span>Télefono de celular: 
+		<input type="text" id="celular" name="celular" maxlength="8" required>
+		<br>
+		<span style="color:red;">*</span>Correo Electronico: 
+		<input type="email" id="userEmail" name="userEmail"  maxlength="225" required>
+		<br>
+		<span style="color:red;">*</span>Grado académico: 
+		<select id="grade" name="grade">
+			<option value="0" selected>Primaria completa</option>
+			<option value="1">Primaria incompleta</option>
+			<option value="2"> Secundaria completa</option>
+			<option value="3">Secundaria incompleta</option>
+			<option value="4">Universidad incompleta</option>
+			<option value="5"> Bachillerato universitario</option>
+			<option value="6">Licenciatura</option>
+			<option value="7">Especialidad</option>
+			<option value="8"> Maestria</option>
+			<option value="9"> Doctorado</option>
+		</select>
+		<br>
+		<span style="color:red;">*</span>Fecha nacimiento: 
+		<input type="date" id="fechaNacimiento" name="fechaNacimiento"  required>
+		<br>
+		<input type="hidden" id="idCode" name="idCode" required>
+		<br>
+		<br><br>
+		<input type="submit" value="Actualizar registro">
+	</form>
+	
+	<form action="consulta_persona.html">
+			<input type="submit" value="Regresar" >
+	</form>
+	
+	</body>
+</html>

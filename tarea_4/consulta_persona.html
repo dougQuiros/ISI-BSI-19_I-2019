@@ -1,0 +1,95 @@
+<!-- 
+/**
+Index
+*/
+ -->
+<!DOCTYPE html>
+<html> 
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" >
+		<title>Personas</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+		<script>
+			function search(){
+				var nombre = document.getElementById('userName').value;
+				var identificacion = document.getElementById('userId').value;
+
+				$.ajax({
+					url:"php/consulta_persona.php",
+					method: "GET",
+					data:{"userName":nombre, "userId":identificacion}
+				}).done(function(data){
+					document.getElementById('personas').innerHTML = data;
+					//$("#personas").val(data);
+				}).fail(function(){
+					alert('Hubo un error en la ejecución.');
+				});
+			
+			}
+			
+			
+			function deleteRow(id, cedula){
+			
+				if(!confirm("¿Desea eliminar el registro del persona seleccionado?")) return;  <!--popup de confirmación -->
+
+				$.ajax({
+					url:"php/eliminar_persona.php",
+					method: "GET",
+					data:{"id":id, "userId":cedula}
+				}).done(function(data){
+					alert(data);
+					location.reload(true);
+				}).fail(function(){
+					alert('Hubo un error en la ejecución.');
+				});
+			
+			}
+		</script>
+	</head>
+
+	
+	<body>
+		<h1 >Personas</h1>
+		<br>
+		Nombre: 
+		<input type="text" name="userName" id="userName" value="" maxlength="50">
+		<br>
+		Identificación: 
+		<input type="text" name="userId" id="userId" value="" maxlength="25">
+		<br><br>
+		<input type="button" value="Consultar" onclick="search();" />
+		
+		<br><br><br>
+		<table width="100%" border="1" style="border-collapse: collapse; border: #d4dae0 1px solid;">				
+			<col width="5%">
+			<col width="16%">
+			<col width="14%">
+			<col width="14%">
+			<col width="14%">
+			<col width="14%">
+			<col width="14%">
+			<col width="9%">
+			<tr>
+				<th width="5%" style="text-align: center;">No.</th>
+				<th width="16%">Identificación</th>
+				<th width="14">Nombre</th>
+				<th width="14%">Fecha Nacimiento</th>
+				<th width="14%">Nacionalidad</th>
+				<th width="14%">Télefono</th>
+				<th width="14%">Email</th>
+				<th width="9%">Opciones</th>
+			</tr>
+		</table>
+		<table id="personas" name="personas" width="100%" border="1" style="border-collapse: collapse; border: #d4dae0 1px solid;">				
+		</table>
+		
+		<br><br><br><br>
+		<div align="right">
+		<form action="ingreso_persona.html">
+			<input type="submit" value="Registrar persona" >
+		</form>
+		</div>
+		
+	</body>
+</html>

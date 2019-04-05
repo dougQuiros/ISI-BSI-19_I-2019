@@ -1,0 +1,3 @@
+modificar la calculadora para que funciones con web service
+
+http://www.dneonline.com/calculator.asmx?WSDL

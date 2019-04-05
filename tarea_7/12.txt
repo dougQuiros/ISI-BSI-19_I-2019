@@ -1,0 +1,5 @@
+tome la libreria, y agregue autenticacion utilizando las instrucciones del sitio:
+
+http://web.tursos.com/como-hacer-un-sistema-de-login-de-usuarios-en-php-mysql/
+
+aplicar algoritmo de encriptación segura para php.

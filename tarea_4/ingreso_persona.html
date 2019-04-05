@@ -1,0 +1,75 @@
+<!-- 
+/**
+Index
+*/
+ -->
+<!DOCTYPE html>
+<html> 
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" >
+		<title>Registro de pesonas</title>
+	</head>
+
+	
+	<body>
+	<form action="php/ingreso_persona.php" method="post">
+		<h1 >Registro de pesonas</h1>
+		<br>
+		<span style="color:red;">*</span>Nombre completo: 
+		<input type="text" name="userName" value="" maxlength="50" required>
+		<br>
+		<span style="color:red;">*</span>Identificación: 
+		<input type="text" name="userId" value="" maxlength="25" required>
+		<br>
+		<span style="color:red;">*</span>Nacionalidad: 
+		<input type="text" name="nacionalidad" value="Costarricense" maxlength="100" required>
+		<br>
+		<span style="color:red;">*</span>Provincia: 
+		<input type="text" name="provincia" value="" maxlength="50" required>
+		<br>
+		<span style="color:red;">*</span>Cantón: 
+		<input type="text" name="canton" value="" maxlength="50" required>
+		<br>
+		<span style="color:red;">*</span>Distrito: 
+		<input type="text" name="distrito" value="" maxlength="50" required>
+		<br>
+		<span style="color:red;">*</span>Dirección exacta: 
+		<textarea cols=50 id="direccion" name="direccion" maxlength="500" required></textarea>
+		<br>
+		<span style="color:red;">*</span>Télefono de domicilio: 
+		<input type="text" name="telefono" maxlength="8" required>
+		<br>
+		<span style="color:red;">*</span>Télefono de celular: 
+		<input type="text" name="celular" maxlength="8" required>
+		<br>
+		<span style="color:red;">*</span>Correo Electronico: 
+		<input type="email" name="userEmail" value="" maxlength="225" required>
+		<br>
+		<span style="color:red;">*</span>Grado académico: 
+		<select name="grade">
+			<option value="0" selected>Primaria completa</option>
+			<option value="1">Primaria incompleta</option>
+			<option value="2"> Secundaria completa</option>
+			<option value="3">Secundaria incompleta</option>
+			<option value="4">Universidad incompleta</option>
+			<option value="5"> Bachillerato universitario</option>
+			<option value="6">Licenciatura</option>
+			<option value="7">Especialidad</option>
+			<option value="8"> Maestria</option>
+			<option value="9"> Doctorado</option>
+		</select>
+		<br>
+		<span style="color:red;">*</span>Fecha nacimiento: 
+		<input type="date" name="fechaNacimiento" value="" required>
+		<br><br>
+		
+		
+		<input type="submit" value="Crear registro">
+	</form>
+	
+	<form action="consulta_persona.html">
+			<input type="submit" value="Regresar" >
+	</form>
+	
+	</body>
+</html>
