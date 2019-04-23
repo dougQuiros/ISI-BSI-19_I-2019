@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html> 
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" >
+		<title>Lista de Titulos Literarios</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<link rel="shortcut icon" href="http://www.uam.ac.pa/wp-content/uploads/2018/06/logo.png" />
+
+		<script>
+			function search(){
+				var titulo = document.getElementById('title').value;
+
+				$.ajax({
+					url:"php/listado.php",
+					method: "GET",
+					data:{"title":titulo}
+				}).done(function(data){
+					document.getElementById('libros').innerHTML = data;
+				}).fail(function(){
+					alert('Error en la ejecución de busqueda de registros en la base de datos de los libros.');
+				});
+			}
+			function deleteRow(id, nombre){
+				if(!confirm("¿Seguro de eliminar el libro "+nombre+" ?")) return;
+
+				$.ajax({
+					url:"php/eliminar.php",
+					method: "GET",
+					data:{"id":id, "nombre":nombre}
+				}).done(function(data){
+					alert(data);
+					location.reload(true);
+				}).fail(function(){
+					alert('Error al intentar eliminar el registro de la base de datos.');
+				});
+			}
+		</script>
+	</head>
+
+	<body>
+		<h2 >Lista de Titulos Literarios</h2>
+		<br>
+		<table style="width:30%">
+			<tr>
+				<td>Titulo:</td>
+				<td><input class="input" type="text" name="title" id="title" value="" maxlength="40"></td>
+			</tr>
+		</table>
+		<br><br>
+		<input class="Btn_pop04" type="button" value="Consultar" onclick="search();" />
+		<br><br><br>
+		<table id="libros" name="libros" width="100%" border="1" style="border-collapse: collapse; border: #d4dae0 1px solid;">				
+			<tr>
+				<th width="16%" style="text-align: center;">No.</th>
+				<th width="17%">TITULO</th>
+				<th width="17%">AUTOR</th>
+				<th width="17%">EDITORIAL</th>
+				<th width="16%">PRECIO</th>
+				<th width="17%"></th>
+			</tr>
+		</table>
+		<br><br><br>
+		<div align="right">
+		<form action="funciones_html/registrar.html">
+			<input type="submit" value="Agregar nuevo libro" >
+		</form>
+		</div>
+		<br>
+		-------------------------------------
+		<br>
+		-------------------------------------
+		<br>
+		<div align="left">
+		<form action="funciones_html/aumento.html">
+			<input type="submit" value="Aumento de precios" >
+		</form>
+		</div>
+	</body>
+</html>

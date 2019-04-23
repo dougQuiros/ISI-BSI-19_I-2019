@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html> 
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" >
+		<title>Aumento de precios</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<link rel="shortcut icon" href="http://www.uam.ac.pa/wp-content/uploads/2018/06/logo.png" />
+
+		<script>
+			function aumento_precios(opcion){
+			var editorial = document.getElementById('editorial').value;
+			
+			if(editorial.length>0){
+			
+				if(opcion=='1'){
+					if(!confirm("¿Desea aumentar en 10% todos los precios de los libros de la editorial "+editorial+" ?")) return;
+
+					$.ajax({
+						url:"../php/aumento1.php",
+						method: "GET",
+						data:{"nombre":editorial}
+					}).done(function(data){
+						alert(data);
+						location.reload(true);
+					}).fail(function(){
+						alert('No fue posible realizar el aumento en los precios.');
+					});
+				} else if(opcion=='2') {
+					if(!confirm("¿Desea aumentar en 10 colones los precios de todos los libros de la editorial "+editorial+" ?")) return;
+
+					$.ajax({
+						url:"../php/aumento2.php",
+						method: "GET",
+						data:{"nombre":editorial}
+					}).done(function(data){
+						alert(data);
+						location.reload(true);
+					}).fail(function(){
+						alert('No fue posible realizar el aumento en los precios.');
+					});
+				}
+			} else {
+				alert('No digitó ningun nombre de editorial');
+				return;
+			}
+			
+			}
+		</script>
+	</head>
+
+	<body>
+		<h2 >Aumento de precios</h2>
+		<br>
+		<table style="width:30%">
+			<tr>
+				<td>Editorial:</td>
+				<td><input class="input" type="text" name="editorial" id="editorial" value="" maxlength="20"></td>
+			</tr>
+		</table>
+		<br><br>
+		<input type="button" value="Aumentar 10%" onclick="aumento_precios('1');" />
+		<input type="button" value="Aumentar 10colones" onclick="aumento_precios('2');" />
+		<br><br><br>
+		<form action="../index.html">
+			<input type="submit" value="Regresar" >
+		</form>
+	</body>
+</html>
